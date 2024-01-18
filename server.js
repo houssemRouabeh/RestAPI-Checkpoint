@@ -24,6 +24,22 @@ app.get("/", async (req, res) => {
     });
   }
 });
+//GET ROUTE:  RETURN ONE USER BY ID
+app.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const getUser = await User.findById(id);
+    res.status(200).json({
+      status: "success",
+      data: getUser,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "failure",
+      message: "User does not exists",
+    });
+  }
+});
 
 //POST ROUTE:  ADD A NEW USER TO THE DATABASE
 app.post("/add", async (req, res) => {
