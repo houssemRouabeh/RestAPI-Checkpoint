@@ -65,7 +65,7 @@ app.put("/update/:id", async (req, res) => {
     const id = req.params.id;
     const data = req.body;
 
-    if (!id || !data || !data.userName) {
+    if (!data || !data.userName) {
       return res.status(400).json({
         status: "failure",
         message: "Invalid request parameters.",
