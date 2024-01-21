@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password is required!!"],
     minLength: [8, "The password must contain at least 8 characters"],
-    //select: false, //Show password or not in response
+    select: false, //Show password or not in response,
+    validate: function (val) {
+      return validator.matches(val, /^([a-zA-Z ]+)$/);
+    },
   },
   createdAt: {
     type: Date,
